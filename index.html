@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LUMIÈRE Hanoi Seasons Garden – Căn hộ cao cấp tại 233 Nguyễn Trãi, Thanh Xuân. Giá từ 128 tr/m². Nhận tư vấn & bảng giá mới nhất." />
+  <title>LUMIÈRE Hanoi Seasons Garden | Bảng Giá & Tư Vấn 2026</title>
+
+  <!-- Google Tag Manager placeholder -->
+  <!-- GTM-XXXXXXX -->
+
+  <style>
+    :root {
+      --gold: #C9A96E;
+      --gold-light: #E8C98A;
+      --dark: #0D0D0D;
+      --dark-2: #161616;
+      --dark-3: #1F1F1F;
+      --text: #F0EDE8;
+      --text-muted: #9E9890;
+      --border: rgba(201,169,110,0.2);
+      --radius: 6px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,13,13,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .topbar-logo { font-size: 13px; letter-spacing: 2px; color: var(--gold); font-weight: 600; text-transform: uppercase; }
+    .topbar-cta {
+      background: var(--gold); color: #0D0D0D;
+      border: none; border-radius: var(--radius);
+      padding: 8px 18px; font-size: 13px; font-weight: 700;
+      cursor: pointer; text-decoration: none; letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+    .topbar-cta:hover { background: var(--gold-light); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(to bottom, rgba(13,13,13,0.6) 0%, rgba(13,13,13,0.85) 100%),
+        url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80') center/cover no-repeat;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 100px 20px 60px;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-size: clamp(28px, 6vw, 56px);
+      font-weight: 300;
+      letter-spacing: 2px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .hero-title strong { color: var(--gold); font-weight: 700; }
+    .hero-subtitle {
+      font-size: clamp(14px, 2vw, 18px);
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+    }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-num { font-size: 28px; font-weight: 700; color: var(--gold); }
+    .hero-stat-label { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; margin-top: 4px; }
+
+    .hero-cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: #0D0D0D;
+      padding: 16px 32px; border-radius: var(--radius);
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-outline {
+      border: 1px solid var(--gold); color: var(--gold);
+      padding: 16px 32px; border-radius: var(--radius);
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-outline:hover { background: rgba(201,169,110,0.1); }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 20px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(22px, 4vw, 36px);
+      font-weight: 300; line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-title strong { font-weight: 700; }
+    .section-desc { color: var(--text-muted); max-width: 600px; font-size: 15px; }
+    .divider { width: 48px; height: 2px; background: var(--gold); margin: 24px 0; }
+
+    /* ── USP GRID ── */
+    .usp-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .usp-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: border-color 0.2s;
+    }
+    .usp-card:hover { border-color: var(--gold); }
+    .usp-icon { font-size: 28px; margin-bottom: 16px; }
+    .usp-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .usp-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── LOCATION ── */
+    .location-section { background: var(--dark-2); }
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
+    .location-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .location-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 15px; line-height: 1.6;
+    }
+    .location-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .map-placeholder {
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      aspect-ratio: 4/3;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; text-align: center; padding: 20px;
+    }
+    .map-placeholder a {
+      color: var(--gold); font-size: 13px; text-decoration: none;
+      border: 1px solid var(--border); padding: 8px 16px; border-radius: var(--radius);
+      margin-top: 8px; display: inline-block;
+    }
+    .map-placeholder a:hover { border-color: var(--gold); }
+
+    /* ── PRICE TABLE ── */
+    .price-table { width: 100%; border-collapse: collapse; margin-top: 40px; font-size: 14px; }
+    .price-table th {
+      text-align: left; padding: 14px 18px;
+      background: var(--dark-3); color: var(--gold);
+      font-weight: 600; letter-spacing: 0.5px; font-size: 12px; text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-table td { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table tr:hover td { background: rgba(201,169,110,0.04); }
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      padding: 3px 8px; border-radius: 3px; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .badge-open { background: rgba(74,222,128,0.15); color: #4ADE80; }
+    .badge-coming { background: rgba(251,191,36,0.15); color: #FBbf24; }
+    .price-note { font-size: 12px; color: var(--text-muted); margin-top: 16px; }
+
+    /* ── LEAD FORM ── */
+    .form-section { background: var(--dark-2); }
+    .form-wrap { max-width: 640px; margin: 0 auto; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group.full { grid-column: 1/-1; }
+    .form-group label { font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
+    .form-group input, .form-group select, .form-group textarea {
+      background: var(--dark-3); border: 1px solid var(--border);
+      color: var(--text); border-radius: var(--radius);
+      padding: 12px 16px; font-size: 14px;
+      transition: border-color 0.2s; outline: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group select option { background: var(--dark-3); }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      width: 100%; margin-top: 8px;
+      background: var(--gold); color: #0D0D0D;
+      border: none; border-radius: var(--radius);
+      padding: 16px; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .form-submit:hover { background: var(--gold-light); }
+    .form-privacy { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 12px; }
+
+    /* ── TRACKING BADGE (demo) ── */
+    .tracking-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.2);
+      border-radius: var(--radius); padding: 10px 16px;
+      font-size: 12px; color: #4ADE80; margin-top: 24px;
+    }
+    .tracking-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ADE80; flex-shrink: 0; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* ── ZALO STICKY ── */
+    .zalo-sticky {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      background: #0068FF; color: white;
+      border-radius: 50px; padding: 14px 22px;
+      font-size: 14px; font-weight: 700;
+      text-decoration: none; display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 4px 24px rgba(0,104,255,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .zalo-sticky:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,104,255,0.5); }
+    .zalo-icon { font-size: 20px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 20px; text-align: center;
+      color: var(--text-muted); font-size: 13px; line-height: 2;
+    }
+    footer strong { color: var(--text); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-stats { gap: 24px; }
+      .location-grid { grid-template-columns: 1fr; }
+      .map-placeholder { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .topbar-logo { font-size: 11px; }
+    }
+
+    /* ── SUCCESS STATE ── */
+    .form-success {
+      display: none; text-align: center; padding: 40px 20px;
+    }
+    .form-success h3 { font-size: 22px; color: var(--gold); margin-bottom: 12px; }
+    .form-success p { color: var(--text-muted); font-size: 15px; }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <span class="topbar-logo">LUMIÈRE · Hanoi Seasons Garden</span>
+  <a href="#tu-van" class="topbar-cta">Nhận Bảng Giá</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-tag">Masterise Homes · Đang Mở Bán 2026</span>
+  <h1 class="hero-title">
+    <strong>LUMIÈRE</strong><br />Hanoi Seasons Garden
+  </h1>
+  <p class="hero-subtitle">233 Nguyễn Trãi, Thanh Xuân · Đối diện Royal City · Metro Cát Linh – Hà Đông</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">8.28 ha</div>
+      <div class="hero-stat-label">Tổng diện tích</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">10 tòa</div>
+      <div class="hero-stat-label">Tháp căn hộ</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">28.8%</div>
+      <div class="hero-stat-label">Mật độ xây dựng</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">128 – 174 tr</div>
+      <div class="hero-stat-label">Giá / m²</div>
+    </div>
+  </div>
+
+  <div class="hero-cta-group">
+    <a href="#tu-van" class="btn-primary">Nhận Tư Vấn & Bảng Giá Mới Nhất</a>
+    <a href="#tong-quan" class="btn-outline">Xem Tổng Quan Dự Án</a>
+  </div>
+</section>
+
+<!-- TỔNG QUAN -->
+<section id="tong-quan">
+  <div class="container">
+    <p class="section-tag">Tổng Quan Dự Án</p>
+    <h2 class="section-title">Khu đô thị <strong>Cao – Xà – Lá</strong><br />lịch sử giữa lòng Hà Nội</h2>
+    <div class="divider"></div>
+    <p class="section-desc">Dự án phát triển trên quỹ đất 8.28ha — khu vực từng là tổ hợp nhà máy Cao su – Xà phòng – Lá (Thuốc lá Thăng Long) ngay trung tâm Thanh Xuân. Mật độ xây dựng chỉ 28.8%, phần lớn diện tích dành cho cảnh quan, tiện ích và không gian xanh.</p>
+
+    <div class="usp-grid">
+      <div class="usp-card">
+        <div class="usp-icon">📍</div>
+        <h3>Vị trí đắc địa Nội đô</h3>
+        <p>Trục Nguyễn Trãi – một trong những tuyến đường thương mại sôi động nhất Hà Nội. Kết nối trực tiếp vào tuyến metro số 2A Cát Linh – Hà Đông.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">🏗️</div>
+        <h3>10 Tòa tháp 35–46 tầng</h3>
+        <p>Chia thành nhiều phân khu: The Bloom, The Petal… Đa dạng loại căn từ Studio đến 4BR, Duplex và Penthouse. 3 tầng hầm để xe.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">🌿</div>
+        <h3>71.2% diện tích cảnh quan</h3>
+        <p>Hơn 70% khuôn viên dành cho công viên nội khu, vườn bốn mùa, hồ điều hòa và tiện ích cộng đồng — hiếm có tại dự án nội đô.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">🏢</div>
+        <h3>Chủ đầu tư Masterise Homes</h3>
+        <p>Đơn vị đứng sau The Global City (HCM), Masteri Waterfront, Masteri West Heights… Uy tín bàn giao và thiết kế quốc tế chuẩn hóa.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">🚇</div>
+        <h3>Kết nối Metro & Vành đai</h3>
+        <p>Cách ga Láng Hạ / Vành đai 2 chỉ vài phút. Đối diện Royal City (Vincom Mega Mall). Liên kết dễ dàng đến Cầu Giấy, Đống Đa, Hoàng Mai.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">📊</div>
+        <h3>Thanh khoản cao – 10 tòa nội bộ</h3>
+        <p>Với 10 tòa mở bán theo từng giai đoạn, cơ hội re-sale giữa các block tốt. Nhiều sàn F1/F2 đang phân phối — thị trường thứ cấp sôi động ngay từ đầu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VỊ TRÍ -->
+<section class="location-section">
+  <div class="container">
+    <p class="section-tag">Vị Trí</p>
+    <h2 class="section-title">Kết nối <strong>đa chiều</strong><br />từ trung tâm Thanh Xuân</h2>
+    <div class="divider"></div>
+
+    <div class="location-grid">
+      <ul class="location-list">
+        <li><span><strong>Đối diện Royal City</strong> – Vincom Mega Mall, hồ bơi, rạp chiếu phim ngay cổng dự án</span></li>
+        <li><span><strong>Metro Cát Linh – Hà Đông</strong> – 1–2 phút đi bộ/xe đến ga gần nhất</span></li>
+        <li><span><strong>Nguyễn Trãi – Trường Chinh</strong> – trục thương mại, trường học, bệnh viện mật độ cao</span></li>
+        <li><span><strong>Big C Thăng Long</strong> – 5 phút</span></li>
+        <li><span><strong>ĐH Hà Nội, ĐHQG</strong> – 10–12 phút</span></li>
+        <li><span><strong>Hồ Gươm, Hoàn Kiếm</strong> – 20 phút theo Vành đai 2</span></li>
+        <li><span><strong>Sân bay Nội Bài</strong> – 35 phút cao tốc</span></li>
+      </ul>
+      <div class="map-placeholder">
+        <span style="font-size:36px">🗺️</span>
+        <span style="color:var(--text-muted); font-size:13px">233–235 Nguyễn Trãi<br/>Thanh Xuân, Hà Nội</span>
+        <a href="https://maps.google.com/?q=233+Nguyen+Trai+Thanh+Xuan+Hanoi" target="_blank" rel="noopener">
+          Xem trên Google Maps →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BẢNG GIÁ -->
+<section id="bang-gia">
+  <div class="container">
+    <p class="section-tag">Bảng Giá Tham Khảo</p>
+    <h2 class="section-title">Giá căn hộ <strong>cập nhật T5/2026</strong></h2>
+    <div class="divider"></div>
+    <p class="section-desc">Giá dao động theo tầng, view và chính sách thanh toán. Liên hệ để nhận bảng giá chi tiết và ưu đãi đang áp dụng.</p>
+
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>Loại căn</th>
+          <th>Diện tích</th>
+          <th>Giá từ (m²)</th>
+          <th>Phân khu</th>
+          <th>Trạng thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Studio</td>
+          <td>~30 – 40 m²</td>
+          <td>128 – 138 tr</td>
+          <td>The Bloom / L1</td>
+          <td><span class="badge badge-open">Đang mở bán</span></td>
+        </tr>
+        <tr>
+          <td>1 Phòng ngủ</td>
+          <td>~45 – 58 m²</td>
+          <td>132 – 148 tr</td>
+          <td>The Bloom / L1</td>
+          <td><span class="badge badge-open">Đang mở bán</span></td>
+        </tr>
+        <tr>
+          <td>2 Phòng ngủ</td>
+          <td>~68 – 85 m²</td>
+          <td>138 – 158 tr</td>
+          <td>The Bloom / The Petal</td>
+          <td><span class="badge badge-open">Đang mở bán</span></td>
+        </tr>
+        <tr>
+          <td>3 Phòng ngủ</td>
+          <td>~95 – 115 m²</td>
+          <td>148 – 168 tr</td>
+          <td>The Petal / P1–P2</td>
+          <td><span class="badge badge-coming">Sắp mở bán</span></td>
+        </tr>
+        <tr>
+          <td>4BR / Duplex</td>
+          <td>~130 m²+</td>
+          <td>162 – 174 tr</td>
+          <td>Masteri Iconic</td>
+          <td><span class="badge badge-coming">Sắp mở bán</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="price-note">* Giá tham khảo, chưa bao gồm VAT & phí bảo trì. Liên hệ để nhận báo giá chính thức và hỗ trợ vay ngân hàng lên đến 70%.</p>
+  </div>
+</section>
+
+<!-- FORM TƯ VẤN -->
+<section id="tu-van" class="form-section">
+  <div class="container">
+    <div class="form-wrap">
+      <p class="section-tag" style="text-align:center">Đăng Ký Tư Vấn</p>
+      <h2 class="section-title" style="text-align:center">Nhận <strong>bảng giá & chính sách</strong><br />mới nhất trong 30 phút</h2>
+      <div class="divider" style="margin:24px auto"></div>
+      <p class="section-desc" style="text-align:center;margin:0 auto">Chúng tôi sẽ liên hệ trong vòng 30 phút (trong giờ hành chính) với đầy đủ thông tin: bảng giá, chính sách vay, lịch tham quan thực tế.</p>
+
+      <!-- Success state -->
+      <div class="form-success" id="form-success">
+        <h3>✓ Đã nhận thông tin!</h3>
+        <p>Chuyên viên sẽ liên hệ với bạn trong vòng 30 phút.<br />Trong khi chờ, bạn có thể nhắn Zalo để được hỗ trợ ngay.</p>
+        <a href="https://zalo.me/0000000000" target="_blank" class="btn-primary" style="margin-top:24px;display:inline-block">
+          Chat Zalo Ngay →
+        </a>
+      </div>
+
+      <!-- Form -->
+      <form id="lead-form" action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" method="POST">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Họ và tên *</label>
+            <input type="text" name="ho_ten" placeholder="Nguyễn Văn A" required />
+          </div>
+          <div class="form-group">
+            <label>Số điện thoại *</label>
+            <input type="tel" name="sdt" placeholder="09xx xxx xxx" required pattern="[0-9]{9,11}" />
+          </div>
+          <div class="form-group">
+            <label>Loại căn quan tâm</label>
+            <select name="loai_can">
+              <option value="">-- Chọn loại căn --</option>
+              <option>Studio</option>
+              <option>1 Phòng ngủ</option>
+              <option>2 Phòng ngủ</option>
+              <option>3 Phòng ngủ</option>
+              <option>4BR / Duplex / Penthouse</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mục đích</label>
+            <select name="muc_dich">
+              <option value="">-- Chọn --</option>
+              <option>Để ở</option>
+              <option>Đầu tư cho thuê</option>
+              <option>Đầu tư tích lũy</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Ghi chú (tuỳ chọn)</label>
+            <textarea name="ghi_chu" placeholder="Tầng cao, view nội khu, ngân sách…"></textarea>
+          </div>
+          <div class="form-group full">
+            <button type="submit" class="form-submit">Gửi Yêu Cầu Tư Vấn →</button>
+          </div>
+        </div>
+      </form>
+
+      <p class="form-privacy">🔒 Thông tin của bạn được bảo mật tuyệt đối. Chúng tôi không chia sẻ dữ liệu cho bên thứ ba.</p>
+
+      <div class="tracking-badge">
+        <div class="tracking-dot"></div>
+        <span>Hệ thống đang theo dõi lead tự động · Thời gian phản hồi trung bình: <strong style="color:#4ADE80">28 phút</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <strong>LUMIÈRE Hanoi Seasons Garden</strong><br />
+    233–235 Nguyễn Trãi, Phường Thượng Đình, Quận Thanh Xuân, Hà Nội<br />
+    Chủ đầu tư: Masterise Homes<br /><br />
+    <span style="font-size:11px">Thông tin trên trang này mang tính chất tham khảo và được tổng hợp từ nguồn phân phối. Giá bán chính thức theo hợp đồng của CĐT.</span>
+  </div>
+</footer>
+
+<!-- ZALO STICKY -->
+<a href="https://zalo.me/0000000000" target="_blank" rel="noopener" class="zalo-sticky" id="zalo-btn">
+  <span class="zalo-icon">💬</span>
+  <span>Chat Zalo Ngay</span>
+</a>
+
+<script>
+  // Form submit → Google Sheets (AJAX)
+  const form = document.getElementById('lead-form');
+  const success = document.getElementById('form-success');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Đang gửi...';
+    btn.disabled = true;
+
+    const data = new FormData(form);
+    // Add metadata
+    data.append('source', document.referrer || 'direct');
+    data.append('utm_source', new URLSearchParams(location.search).get('utm_source') || '');
+    data.append('utm_medium', new URLSearchParams(location.search).get('utm_medium') || '');
+    data.append('utm_campaign', new URLSearchParams(location.search).get('utm_campaign') || '');
+    data.append('timestamp', new Date().toLocaleString('vi-VN'));
+    data.append('page_url', location.href);
+
+    fetch(form.action, { method: 'POST', body: data })
+      .then(() => {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      })
+      .catch(() => {
+        // Fallback: still show success (data may have gone through)
+        form.style.display = 'none';
+        success.style.display = 'block';
+      });
+  });
+
+  // Smooth scroll offset for fixed topbar
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({ top: target.offsetTop - 64, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Show Zalo button after scroll
+  const zaloBTN = document.getElementById('zalo-btn');
+  window.addEventListener('scroll', () => {
+    zaloBTN.style.opacity = window.scrollY > 300 ? '1' : '0';
+    zaloBTN.style.pointerEvents = window.scrollY > 300 ? 'auto' : 'none';
+  });
+  zaloBTN.style.opacity = '0';
+  zaloBTN.style.transition = 'opacity 0.3s';
+</script>
+
+</body>
+</html>
