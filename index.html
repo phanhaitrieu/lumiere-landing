@@ -136,344 +136,581 @@
   }
   </script>
 
-  <!-- Google Tag Manager placeholder -->
-  <!-- GTM-XXXXXXX -->
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
 
   <style>
+    /* ── RESET & TOKENS ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
     :root {
-      --gold: #C9A96E;
-      --gold-light: #E8C98A;
-      --dark: #0D0D0D;
-      --dark-2: #161616;
-      --dark-3: #1F1F1F;
-      --text: #F0EDE8;
-      --text-muted: #9E9890;
-      --border: rgba(201,169,110,0.2);
-      --radius: 6px;
+      --gold:        #C9A96E;
+      --gold-light:  #E2C38E;
+      --gold-dim:    rgba(201,169,110,0.18);
+      --gold-border: rgba(201,169,110,0.25);
+      --dark:        #0A0A0A;
+      --dark-2:      #111111;
+      --dark-3:      #181818;
+      --dark-4:      #202020;
+      --text:        #EDE9E3;
+      --text-muted:  #8A8479;
+      --text-dim:    #5A5650;
+      --green:       #4ADE80;
+      --radius:      4px;
+      --radius-lg:   8px;
+      --transition:  0.25s ease;
+      --shadow:      0 4px 32px rgba(0,0,0,0.5);
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
       background: var(--dark);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
+
+    /* ── FADE IN ANIMATION ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+    .fade-up:nth-child(5) { transition-delay: 0.35s; }
+    .fade-up:nth-child(6) { transition-delay: 0.4s; }
 
     /* ── TOPBAR ── */
     .topbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(13,13,13,0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 20px;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 0 24px;
+      height: 60px;
       display: flex; justify-content: space-between; align-items: center;
     }
-    .topbar-logo { font-size: 13px; letter-spacing: 2px; color: var(--gold); font-weight: 600; text-transform: uppercase; }
-    .topbar-cta {
-      background: var(--gold); color: #0D0D0D;
-      border: none; border-radius: var(--radius);
-      padding: 8px 18px; font-size: 13px; font-weight: 700;
-      cursor: pointer; text-decoration: none; letter-spacing: 0.5px;
-      transition: background 0.2s;
+    .topbar-logo {
+      font-size: 11px; letter-spacing: 3px; color: var(--gold);
+      font-weight: 600; text-transform: uppercase;
+      font-family: 'Be Vietnam Pro', sans-serif;
     }
-    .topbar-cta:hover { background: var(--gold-light); }
+    .topbar-logo span { color: var(--text-muted); font-weight: 400; }
+    .topbar-cta {
+      background: var(--gold); color: #0A0A0A;
+      border: none; border-radius: var(--radius);
+      padding: 9px 20px; font-size: 12px; font-weight: 700;
+      cursor: pointer; text-decoration: none; letter-spacing: 0.8px;
+      text-transform: uppercase;
+      transition: background var(--transition), transform var(--transition);
+      font-family: 'Be Vietnam Pro', sans-serif;
+    }
+    .topbar-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
 
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      background:
-        linear-gradient(to bottom, rgba(13,13,13,0.6) 0%, rgba(13,13,13,0.85) 100%),
-        url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80') center/cover no-repeat;
+      position: relative;
       display: flex; flex-direction: column; justify-content: center;
-      padding: 100px 20px 60px;
+      padding: 120px 24px 80px;
       text-align: center;
+      overflow: hidden;
     }
-    .hero-tag {
-      display: inline-block;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-      padding: 6px 16px; border-radius: 20px;
-      margin-bottom: 24px;
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=85') center/cover no-repeat;
     }
-    .hero-title {
-      font-size: clamp(28px, 6vw, 56px);
-      font-weight: 300;
-      letter-spacing: 2px;
-      line-height: 1.2;
-      margin-bottom: 8px;
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        160deg,
+        rgba(10,10,10,0.75) 0%,
+        rgba(10,10,10,0.55) 40%,
+        rgba(10,10,10,0.80) 100%
+      );
     }
-    .hero-title strong { color: var(--gold); font-weight: 700; }
-    .hero-subtitle {
-      font-size: clamp(14px, 2vw, 18px);
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      letter-spacing: 1px;
-    }
-    .hero-stats {
-      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
-      margin-bottom: 48px;
-    }
-    .hero-stat { text-align: center; }
-    .hero-stat-num { font-size: 28px; font-weight: 700; color: var(--gold); }
-    .hero-stat-label { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; margin-top: 4px; }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
 
-    .hero-cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--gold-border);
+      background: rgba(201,169,110,0.08);
+      color: var(--gold);
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      padding: 7px 18px; border-radius: 40px;
+      margin-bottom: 28px;
+      font-weight: 600;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green);
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(42px, 8vw, 80px);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.4);
+    }
+    .hero-title strong {
+      font-weight: 600;
+      color: var(--gold);
+      display: block;
+    }
+    .hero-title-sub {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight: 300;
+      letter-spacing: 6px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-address {
+      font-size: 13px; letter-spacing: 1.5px; color: var(--text-muted);
+      margin-bottom: 52px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .hero-address::before, .hero-address::after {
+      content: ''; display: block;
+      width: 40px; height: 1px; background: var(--gold-border);
+    }
+
+    .hero-stats {
+      display: flex; justify-content: center; gap: 0;
+      margin-bottom: 52px;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+      background: rgba(10,10,10,0.5);
+      max-width: 600px;
+      margin-left: auto; margin-right: auto;
+    }
+    .hero-stat {
+      flex: 1; text-align: center;
+      padding: 20px 16px;
+      border-right: 1px solid var(--gold-border);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-size: 22px; font-weight: 700; color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-stat-label { font-size: 10px; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; }
+
+    .hero-cta-group {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    }
     .btn-primary {
-      background: var(--gold); color: #0D0D0D;
-      padding: 16px 32px; border-radius: var(--radius);
-      font-size: 15px; font-weight: 700; text-decoration: none;
-      transition: background 0.2s, transform 0.1s;
+      background: var(--gold); color: #0A0A0A;
+      padding: 15px 34px; border-radius: var(--radius);
+      font-size: 13px; font-weight: 700; text-decoration: none;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
       display: inline-block;
+      font-family: 'Be Vietnam Pro', sans-serif;
     }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,169,110,0.3);
+    }
     .btn-outline {
-      border: 1px solid var(--gold); color: var(--gold);
-      padding: 16px 32px; border-radius: var(--radius);
-      font-size: 15px; font-weight: 600; text-decoration: none;
-      transition: all 0.2s; display: inline-block;
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 15px 34px; border-radius: var(--radius);
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      transition: all var(--transition); display: inline-block;
+      font-family: 'Be Vietnam Pro', sans-serif;
     }
-    .btn-outline:hover { background: rgba(201,169,110,0.1); }
+    .btn-outline:hover {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+    }
+
+    /* ── DIVIDER LINE ── */
+    .gold-line { width: 40px; height: 1px; background: var(--gold); margin: 20px 0 28px; }
+    .gold-line.center { margin-left: auto; margin-right: auto; }
 
     /* ── SECTIONS ── */
-    section { padding: 80px 20px; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .section-tag {
-      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 12px;
+    section { padding: 96px 24px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-label {
+      font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px; font-weight: 600;
     }
     .section-title {
-      font-size: clamp(22px, 4vw, 36px);
-      font-weight: 300; line-height: 1.3;
-      margin-bottom: 16px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(26px, 4vw, 44px);
+      font-weight: 400; line-height: 1.2;
     }
-    .section-title strong { font-weight: 700; }
-    .section-desc { color: var(--text-muted); max-width: 600px; font-size: 15px; }
-    .divider { width: 48px; height: 2px; background: var(--gold); margin: 24px 0; }
+    .section-title strong { font-weight: 600; }
+    .section-desc {
+      color: var(--text-muted); max-width: 560px;
+      font-size: 15px; line-height: 1.8;
+    }
 
     /* ── USP GRID ── */
     .usp-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px; margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 56px;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
     }
     .usp-card {
       background: var(--dark-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      transition: border-color 0.2s;
+      padding: 36px 28px;
+      transition: background var(--transition);
+      position: relative;
     }
-    .usp-card:hover { border-color: var(--gold); }
-    .usp-icon { font-size: 28px; margin-bottom: 16px; }
-    .usp-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-    .usp-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .usp-card:hover { background: var(--dark-3); }
+    .usp-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 28px; right: 28px;
+      height: 1px; background: var(--gold-border);
+    }
+    .usp-row-bottom .usp-card::after { display: none; }
+    .usp-card + .usp-card { border-left: 1px solid var(--gold-border); }
+    .usp-icon-wrap {
+      width: 44px; height: 44px;
+      border: 1px solid var(--gold-border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .usp-icon-wrap svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .usp-card h3 {
+      font-size: 15px; font-weight: 600; margin-bottom: 10px; color: var(--text);
+    }
+    .usp-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.75; }
 
     /* ── LOCATION ── */
     .location-section { background: var(--dark-2); }
-    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
-    .location-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-    .location-list li {
-      display: flex; align-items: flex-start; gap: 14px;
-      font-size: 15px; line-height: 1.6;
+    .location-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start; margin-top: 52px;
     }
-    .location-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
-    .map-placeholder {
-      background: var(--dark-3);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      aspect-ratio: 4/3;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 12px; text-align: center; padding: 20px;
+    .location-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .location-item {
+      display: flex; gap: 16px; padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
-    .map-placeholder a {
-      color: var(--gold); font-size: 13px; text-decoration: none;
-      border: 1px solid var(--border); padding: 8px 16px; border-radius: var(--radius);
-      margin-top: 8px; display: inline-block;
+    .location-item:last-child { border-bottom: none; }
+    .location-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      border: 1px solid var(--gold-border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
     }
-    .map-placeholder a:hover { border-color: var(--gold); }
+    .location-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .location-text strong { font-size: 14px; font-weight: 600; display: block; margin-bottom: 2px; }
+    .location-text span { font-size: 13px; color: var(--text-muted); }
+
+    .map-embed {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--gold-border);
+      height: 380px;
+    }
+    .map-embed iframe { width: 100%; height: 100%; border: none; display: block; }
 
     /* ── PRICE TABLE ── */
-    .price-table { width: 100%; border-collapse: collapse; margin-top: 40px; font-size: 14px; }
-    .price-table th {
-      text-align: left; padding: 14px 18px;
-      background: var(--dark-3); color: var(--gold);
-      font-weight: 600; letter-spacing: 0.5px; font-size: 12px; text-transform: uppercase;
-      border-bottom: 1px solid var(--border);
+    .price-table {
+      width: 100%; border-collapse: collapse;
+      margin-top: 44px; font-size: 14px;
     }
-    .price-table td { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .price-table tr:last-child td { border-bottom: none; }
-    .price-table tr:hover td { background: rgba(201,169,110,0.04); }
+    .price-table thead th {
+      padding: 14px 20px;
+      background: var(--dark-3);
+      color: var(--gold);
+      font-weight: 600; letter-spacing: 1px;
+      font-size: 10px; text-transform: uppercase;
+      border-bottom: 1px solid var(--gold-border);
+      text-align: left;
+    }
+    .price-table tbody td {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    .price-table tbody tr:last-child td { border-bottom: none; }
+    .price-table tbody tr { transition: background var(--transition); }
+    .price-table tbody tr:hover td { background: rgba(201,169,110,0.05); }
+    .price-table-wrap {
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
     .badge {
       display: inline-block; font-size: 10px; font-weight: 700;
-      padding: 3px 8px; border-radius: 3px; letter-spacing: 0.5px; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 40px;
+      letter-spacing: 0.5px; text-transform: uppercase;
     }
-    .badge-open { background: rgba(74,222,128,0.15); color: #4ADE80; }
-    .badge-coming { background: rgba(251,191,36,0.15); color: #FBbf24; }
-    .price-note { font-size: 12px; color: var(--text-muted); margin-top: 16px; }
+    .badge-open { background: rgba(74,222,128,0.12); color: #4ADE80; border: 1px solid rgba(74,222,128,0.25); }
+    .badge-coming { background: rgba(251,191,36,0.12); color: #FBBF24; border: 1px solid rgba(251,191,36,0.25); }
+    .price-note {
+      font-size: 12px; color: var(--text-dim);
+      margin-top: 16px; padding-left: 4px;
+    }
 
-    /* ── LEAD FORM ── */
+    /* ── FORM SECTION ── */
     .form-section { background: var(--dark-2); }
-    .form-wrap { max-width: 640px; margin: 0 auto; }
+    .form-outer { max-width: 600px; margin: 0 auto; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-group.full { grid-column: 1/-1; }
-    .form-group label { font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
-    .form-group input, .form-group select, .form-group textarea {
-      background: var(--dark-3); border: 1px solid var(--border);
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 11px; color: var(--text-muted);
+      letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--dark-4);
+      border: 1px solid rgba(255,255,255,0.08);
       color: var(--text); border-radius: var(--radius);
-      padding: 12px 16px; font-size: 14px;
-      transition: border-color 0.2s; outline: none;
-      -webkit-appearance: none;
+      padding: 13px 16px; font-size: 14px;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none; -webkit-appearance: none;
     }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
       border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,169,110,0.08);
     }
-    .form-group select option { background: var(--dark-3); }
+    .form-group input::placeholder { color: var(--text-dim); }
+    .form-group select option { background: var(--dark-4); }
     .form-group textarea { resize: vertical; min-height: 80px; }
     .form-submit {
-      width: 100%; margin-top: 8px;
-      background: var(--gold); color: #0D0D0D;
+      width: 100%; margin-top: 4px;
+      background: var(--gold); color: #0A0A0A;
       border: none; border-radius: var(--radius);
-      padding: 16px; font-size: 15px; font-weight: 700;
-      cursor: pointer; transition: background 0.2s;
-      letter-spacing: 0.5px;
+      padding: 16px; font-size: 13px; font-weight: 700;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      cursor: pointer; letter-spacing: 1px; text-transform: uppercase;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
     }
-    .form-submit:hover { background: var(--gold-light); }
-    .form-privacy { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 12px; }
+    .form-submit:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(201,169,110,0.25);
+    }
+    .form-meta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 24px; margin-top: 24px;
+      font-size: 12px; color: var(--text-dim);
+    }
+    .form-meta-item { display: flex; align-items: center; gap: 6px; }
+    .form-meta-item svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; }
 
-    /* ── TRACKING BADGE (demo) ── */
+    /* ── TRACKING BADGE ── */
     .tracking-badge {
       display: flex; align-items: center; gap: 10px;
-      background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.2);
-      border-radius: var(--radius); padding: 10px 16px;
-      font-size: 12px; color: #4ADE80; margin-top: 24px;
+      background: rgba(74,222,128,0.06);
+      border: 1px solid rgba(74,222,128,0.18);
+      border-radius: var(--radius); padding: 12px 18px;
+      font-size: 12px; color: var(--green);
+      margin-top: 28px;
     }
-    .tracking-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ADE80; flex-shrink: 0; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-    /* ── ZALO STICKY ── */
-    .zalo-sticky {
-      position: fixed; bottom: 24px; right: 24px; z-index: 200;
-      background: #0068FF; color: white;
-      border-radius: 50px; padding: 14px 22px;
-      font-size: 14px; font-weight: 700;
-      text-decoration: none; display: flex; align-items: center; gap: 10px;
-      box-shadow: 0 4px 24px rgba(0,104,255,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .zalo-sticky:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,104,255,0.5); }
-    .zalo-icon { font-size: 20px; }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 20px; text-align: center;
-      color: var(--text-muted); font-size: 13px; line-height: 2;
-    }
-    footer strong { color: var(--text); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .hero-stats { gap: 24px; }
-      .location-grid { grid-template-columns: 1fr; }
-      .map-placeholder { display: none; }
-      .form-grid { grid-template-columns: 1fr; }
-      .form-group.full { grid-column: 1; }
-      .topbar-logo { font-size: 11px; }
+    .tracking-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+      animation: blink 2s infinite;
     }
 
     /* ── SUCCESS STATE ── */
     .form-success {
-      display: none; text-align: center; padding: 40px 20px;
+      display: none; text-align: center; padding: 48px 20px;
     }
-    .form-success h3 { font-size: 22px; color: var(--gold); margin-bottom: 12px; }
-    .form-success p { color: var(--text-muted); font-size: 15px; }
+    .form-success-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(74,222,128,0.12); border: 1px solid rgba(74,222,128,0.3);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .form-success-icon svg { width: 24px; height: 24px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .form-success h3 { font-size: 22px; color: var(--gold); margin-bottom: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+    .form-success p { color: var(--text-muted); font-size: 15px; line-height: 1.7; }
+
+    /* ── ZALO STICKY ── */
+    .zalo-sticky {
+      position: fixed; bottom: 28px; right: 28px; z-index: 300;
+      background: #0068FF; color: white;
+      border-radius: 50px; padding: 13px 22px;
+      font-size: 13px; font-weight: 700;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 28px rgba(0,104,255,0.35);
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+      font-family: 'Be Vietnam Pro', sans-serif;
+      letter-spacing: 0.3px;
+    }
+    .zalo-sticky:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 36px rgba(0,104,255,0.45);
+    }
+    .zalo-sticky svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark-2);
+      border-top: 1px solid var(--gold-border);
+      padding: 40px 24px; text-align: center;
+      color: var(--text-dim); font-size: 12px; line-height: 2;
+    }
+    footer strong { color: var(--text-muted); font-weight: 600; }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 300;
+      color: var(--gold); letter-spacing: 3px;
+      margin-bottom: 12px; display: block;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .usp-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .hero-stats { flex-direction: row; gap: 0; }
+      .hero-stat { padding: 16px 10px; }
+      .hero-stat-num { font-size: 17px; }
+      .location-inner { grid-template-columns: 1fr; gap: 40px; }
+      .map-embed { height: 280px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .usp-grid { grid-template-columns: 1fr; }
+      .usp-card + .usp-card { border-left: none; border-top: 1px solid var(--gold-border); }
+      .usp-card::after { display: none; }
+      .topbar-logo { font-size: 9px; letter-spacing: 1.5px; }
+      .form-meta { flex-direction: column; gap: 10px; }
+    }
   </style>
 </head>
 <body>
 
 <!-- TOP BAR -->
 <nav class="topbar">
-  <span class="topbar-logo">LUMIÈRE · Hanoi Seasons Garden</span>
+  <span class="topbar-logo">LUMIÈRE <span>· Hanoi Seasons Garden</span></span>
   <a href="#tu-van" class="topbar-cta">Nhận Bảng Giá</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <span class="hero-tag">Masterise Homes · Đang Mở Bán 2026</span>
-  <h1 class="hero-title">
-    <strong>LUMIÈRE</strong><br />Hanoi Seasons Garden
-  </h1>
-  <p class="hero-subtitle">233 Nguyễn Trãi, Thanh Xuân · Đối diện Royal City · Metro Cát Linh – Hà Đông</p>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Masterise Homes · Đang Mở Bán 2026</div>
+    <h1 class="hero-title">
+      <strong>LUMIÈRE</strong>
+    </h1>
+    <p class="hero-title-sub">Hanoi Seasons Garden</p>
+    <p class="hero-address">233 Nguyễn Trãi, Thanh Xuân · Đối diện Royal City · Metro Cát Linh – Hà Đông</p>
 
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-num">8.28 ha</div>
-      <div class="hero-stat-label">Tổng diện tích</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">8.28 ha</div>
+        <div class="hero-stat-label">Tổng diện tích</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">10 tòa</div>
+        <div class="hero-stat-label">Tháp căn hộ</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">28.8%</div>
+        <div class="hero-stat-label">Mật độ xây dựng</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">128–174 tr</div>
+        <div class="hero-stat-label">Giá / m²</div>
+      </div>
     </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">10 tòa</div>
-      <div class="hero-stat-label">Tháp căn hộ</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">28.8%</div>
-      <div class="hero-stat-label">Mật độ xây dựng</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">128 – 174 tr</div>
-      <div class="hero-stat-label">Giá / m²</div>
-    </div>
-  </div>
 
-  <div class="hero-cta-group">
-    <a href="#tu-van" class="btn-primary">Nhận Tư Vấn & Bảng Giá Mới Nhất</a>
-    <a href="#tong-quan" class="btn-outline">Xem Tổng Quan Dự Án</a>
+    <div class="hero-cta-group">
+      <a href="#tu-van" class="btn-primary">Nhận Tư Vấn & Bảng Giá</a>
+      <a href="#tong-quan" class="btn-outline">Tổng Quan Dự Án</a>
+    </div>
   </div>
 </section>
 
 <!-- TỔNG QUAN -->
 <section id="tong-quan">
   <div class="container">
-    <p class="section-tag">Tổng Quan Dự Án</p>
-    <h2 class="section-title">Khu đô thị <strong>Cao – Xà – Lá</strong><br />lịch sử giữa lòng Hà Nội</h2>
-    <div class="divider"></div>
-    <p class="section-desc">Dự án phát triển trên quỹ đất 8.28ha — khu vực từng là tổ hợp nhà máy Cao su – Xà phòng – Lá (Thuốc lá Thăng Long) ngay trung tâm Thanh Xuân. Mật độ xây dựng chỉ 28.8%, phần lớn diện tích dành cho cảnh quan, tiện ích và không gian xanh.</p>
+    <p class="section-label fade-up">Tổng Quan Dự Án</p>
+    <h2 class="section-title fade-up">Khu đô thị <strong>Cao – Xà – Lá</strong><br />lịch sử giữa lòng Hà Nội</h2>
+    <div class="gold-line fade-up"></div>
+    <p class="section-desc fade-up">Phát triển trên quỹ đất 8.28ha — khu nhà máy Cao su – Xà phòng – Lá (Thuốc lá Thăng Long) ngay trung tâm Thanh Xuân. Mật độ xây dựng chỉ 28.8%, phần lớn diện tích dành cho cảnh quan và tiện ích nội khu.</p>
 
     <div class="usp-grid">
-      <div class="usp-card">
-        <div class="usp-icon">📍</div>
-        <h3>Vị trí đắc địa Nội đô</h3>
-        <p>Trục Nguyễn Trãi – một trong những tuyến đường thương mại sôi động nhất Hà Nội. Kết nối trực tiếp vào tuyến metro số 2A Cát Linh – Hà Đông.</p>
+      <!-- Row 1 -->
+      <div class="usp-card fade-up">
+        <div class="usp-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <h3>Vị trí đắc địa nội đô</h3>
+        <p>Trục Nguyễn Trãi — tuyến đường thương mại sôi động nhất Hà Nội. Kết nối trực tiếp Metro 2A Cát Linh – Hà Đông.</p>
       </div>
-      <div class="usp-card">
-        <div class="usp-icon">🏗️</div>
+      <div class="usp-card fade-up">
+        <div class="usp-icon-wrap">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
         <h3>10 Tòa tháp 35–46 tầng</h3>
-        <p>Chia thành nhiều phân khu: The Bloom, The Petal… Đa dạng loại căn từ Studio đến 4BR, Duplex và Penthouse. 3 tầng hầm để xe.</p>
+        <p>Phân khu The Bloom, The Petal, Masteri Iconic. Đa dạng từ Studio đến 4BR, Duplex, Penthouse. 3 tầng hầm liên thông.</p>
       </div>
-      <div class="usp-card">
-        <div class="usp-icon">🌿</div>
+      <div class="usp-card fade-up">
+        <div class="usp-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
         <h3>71.2% diện tích cảnh quan</h3>
-        <p>Hơn 70% khuôn viên dành cho công viên nội khu, vườn bốn mùa, hồ điều hòa và tiện ích cộng đồng — hiếm có tại dự án nội đô.</p>
+        <p>Hơn 70% khuôn viên là công viên nội khu, vườn bốn mùa, hồ điều hòa — hiếm có tại dự án nội đô Hà Nội.</p>
       </div>
-      <div class="usp-card">
-        <div class="usp-icon">🏢</div>
+      <!-- Row 2 -->
+      <div class="usp-card usp-row-bottom fade-up">
+        <div class="usp-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
         <h3>Chủ đầu tư Masterise Homes</h3>
-        <p>Đơn vị đứng sau The Global City (HCM), Masteri Waterfront, Masteri West Heights… Uy tín bàn giao và thiết kế quốc tế chuẩn hóa.</p>
+        <p>Đơn vị sau The Global City (HCM), Masteri Waterfront, Masteri West Heights. Chuẩn bàn giao quốc tế.</p>
       </div>
-      <div class="usp-card">
-        <div class="usp-icon">🚇</div>
+      <div class="usp-card usp-row-bottom fade-up">
+        <div class="usp-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6M4 4l5 5"/></svg>
+        </div>
         <h3>Kết nối Metro & Vành đai</h3>
-        <p>Cách ga Láng Hạ / Vành đai 2 chỉ vài phút. Đối diện Royal City (Vincom Mega Mall). Liên kết dễ dàng đến Cầu Giấy, Đống Đa, Hoàng Mai.</p>
+        <p>Đối diện Royal City (Vincom Mega Mall). Cách ga Láng Hạ / Vành đai 2 vài phút. Sân bay 35 phút.</p>
       </div>
-      <div class="usp-card">
-        <div class="usp-icon">📊</div>
-        <h3>Thanh khoản cao – 10 tòa nội bộ</h3>
-        <p>Với 10 tòa mở bán theo từng giai đoạn, cơ hội re-sale giữa các block tốt. Nhiều sàn F1/F2 đang phân phối — thị trường thứ cấp sôi động ngay từ đầu.</p>
+      <div class="usp-card usp-row-bottom fade-up">
+        <div class="usp-icon-wrap">
+          <svg viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+        </div>
+        <h3>Thanh khoản cao — 10 tòa nội bộ</h3>
+        <p>Mở bán theo giai đoạn, re-sale giữa các block sôi động. Nhiều sàn F1/F2 đang phân phối trực tiếp.</p>
       </div>
     </div>
   </div>
@@ -482,26 +719,57 @@
 <!-- VỊ TRÍ -->
 <section class="location-section">
   <div class="container">
-    <p class="section-tag">Vị Trí</p>
-    <h2 class="section-title">Kết nối <strong>đa chiều</strong><br />từ trung tâm Thanh Xuân</h2>
-    <div class="divider"></div>
+    <p class="section-label fade-up">Vị Trí</p>
+    <h2 class="section-title fade-up">Kết nối <strong>đa chiều</strong><br />từ trung tâm Thanh Xuân</h2>
+    <div class="gold-line fade-up"></div>
 
-    <div class="location-grid">
+    <div class="location-inner">
       <ul class="location-list">
-        <li><span><strong>Đối diện Royal City</strong> – Vincom Mega Mall, hồ bơi, rạp chiếu phim ngay cổng dự án</span></li>
-        <li><span><strong>Metro Cát Linh – Hà Đông</strong> – 1–2 phút đi bộ/xe đến ga gần nhất</span></li>
-        <li><span><strong>Nguyễn Trãi – Trường Chinh</strong> – trục thương mại, trường học, bệnh viện mật độ cao</span></li>
-        <li><span><strong>Big C Thăng Long</strong> – 5 phút</span></li>
-        <li><span><strong>ĐH Hà Nội, ĐHQG</strong> – 10–12 phút</span></li>
-        <li><span><strong>Hồ Gươm, Hoàn Kiếm</strong> – 20 phút theo Vành đai 2</span></li>
-        <li><span><strong>Sân bay Nội Bài</strong> – 35 phút cao tốc</span></li>
+        <li class="location-item fade-up">
+          <div class="location-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+          </div>
+          <div class="location-text">
+            <strong>Đối diện Royal City</strong>
+            <span>Vincom Mega Mall, hồ bơi Olympic, rạp CGV ngay cổng dự án</span>
+          </div>
+        </li>
+        <li class="location-item fade-up">
+          <div class="location-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/></svg>
+          </div>
+          <div class="location-text">
+            <strong>Metro Cát Linh – Hà Đông</strong>
+            <span>1–2 phút đi bộ/xe đến ga gần nhất. Kết nối toàn tuyến.</span>
+          </div>
+        </li>
+        <li class="location-item fade-up">
+          <div class="location-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          </div>
+          <div class="location-text">
+            <strong>Nguyễn Trãi – Trường Chinh</strong>
+            <span>Trục thương mại, trường học, bệnh viện mật độ cao nhất Hà Nội</span>
+          </div>
+        </li>
+        <li class="location-item fade-up">
+          <div class="location-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div class="location-text">
+            <strong>Big C Thăng Long · ĐH Hà Nội</strong>
+            <span>5 phút · 10 phút · Hồ Gươm 20 phút · Nội Bài 35 phút</span>
+          </div>
+        </li>
       </ul>
-      <div class="map-placeholder">
-        <span style="font-size:36px">🗺️</span>
-        <span style="color:var(--text-muted); font-size:13px">233–235 Nguyễn Trãi<br/>Thanh Xuân, Hà Nội</span>
-        <a href="https://maps.google.com/?q=233+Nguyen+Trai+Thanh+Xuan+Hanoi" target="_blank" rel="noopener">
-          Xem trên Google Maps →
-        </a>
+
+      <div class="map-embed fade-up">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.9547694015!2d105.81062!3d20.99720!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad17b6a5dea3%3A0x2a1f52e03ef6f25d!2s233%20Nguy%E1%BB%85n%20Tr%C3%A3i%2C%20Th%C6%B0%E1%BB%A3ng%20%C4%90%C3%ACnh%2C%20Thanh%20Xu%C3%A2n%2C%20H%C3%A0%20N%E1%BB%99i!5e0!3m2!1svi!2svn!4v1716900000000!5m2!1svi!2svn"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Vị trí LUMIÈRE Hanoi Seasons Garden, 233 Nguyễn Trãi, Thanh Xuân">
+        </iframe>
       </div>
     </div>
   </div>
@@ -510,59 +778,61 @@
 <!-- BẢNG GIÁ -->
 <section id="bang-gia">
   <div class="container">
-    <p class="section-tag">Bảng Giá Tham Khảo</p>
-    <h2 class="section-title">Giá căn hộ <strong>cập nhật T5/2026</strong></h2>
-    <div class="divider"></div>
-    <p class="section-desc">Giá dao động theo tầng, view và chính sách thanh toán. Liên hệ để nhận bảng giá chi tiết và ưu đãi đang áp dụng.</p>
+    <p class="section-label fade-up">Bảng Giá Tham Khảo</p>
+    <h2 class="section-title fade-up">Giá căn hộ <strong>cập nhật T5/2026</strong></h2>
+    <div class="gold-line fade-up"></div>
+    <p class="section-desc fade-up">Giá dao động theo tầng, view và chính sách thanh toán. Liên hệ để nhận bảng giá chi tiết và ưu đãi đang áp dụng.</p>
 
-    <table class="price-table">
-      <thead>
-        <tr>
-          <th>Loại căn</th>
-          <th>Diện tích</th>
-          <th>Giá từ (m²)</th>
-          <th>Phân khu</th>
-          <th>Trạng thái</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Studio</td>
-          <td>~30 – 40 m²</td>
-          <td>128 – 138 tr</td>
-          <td>The Bloom / L1</td>
-          <td><span class="badge badge-open">Đang mở bán</span></td>
-        </tr>
-        <tr>
-          <td>1 Phòng ngủ</td>
-          <td>~45 – 58 m²</td>
-          <td>132 – 148 tr</td>
-          <td>The Bloom / L1</td>
-          <td><span class="badge badge-open">Đang mở bán</span></td>
-        </tr>
-        <tr>
-          <td>2 Phòng ngủ</td>
-          <td>~68 – 85 m²</td>
-          <td>138 – 158 tr</td>
-          <td>The Bloom / The Petal</td>
-          <td><span class="badge badge-open">Đang mở bán</span></td>
-        </tr>
-        <tr>
-          <td>3 Phòng ngủ</td>
-          <td>~95 – 115 m²</td>
-          <td>148 – 168 tr</td>
-          <td>The Petal / P1–P2</td>
-          <td><span class="badge badge-coming">Sắp mở bán</span></td>
-        </tr>
-        <tr>
-          <td>4BR / Duplex</td>
-          <td>~130 m²+</td>
-          <td>162 – 174 tr</td>
-          <td>Masteri Iconic</td>
-          <td><span class="badge badge-coming">Sắp mở bán</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="price-table-wrap fade-up">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Loại căn</th>
+            <th>Diện tích</th>
+            <th>Giá từ (m²)</th>
+            <th>Phân khu</th>
+            <th>Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Studio</strong></td>
+            <td>~30 – 40 m²</td>
+            <td style="color:var(--gold);font-weight:600">128 – 138 tr</td>
+            <td style="color:var(--text-muted)">The Bloom / L1</td>
+            <td><span class="badge badge-open">Đang mở bán</span></td>
+          </tr>
+          <tr>
+            <td><strong>1 Phòng ngủ</strong></td>
+            <td>~45 – 58 m²</td>
+            <td style="color:var(--gold);font-weight:600">132 – 148 tr</td>
+            <td style="color:var(--text-muted)">The Bloom / L1</td>
+            <td><span class="badge badge-open">Đang mở bán</span></td>
+          </tr>
+          <tr>
+            <td><strong>2 Phòng ngủ</strong></td>
+            <td>~68 – 85 m²</td>
+            <td style="color:var(--gold);font-weight:600">138 – 158 tr</td>
+            <td style="color:var(--text-muted)">The Bloom / The Petal</td>
+            <td><span class="badge badge-open">Đang mở bán</span></td>
+          </tr>
+          <tr>
+            <td><strong>3 Phòng ngủ</strong></td>
+            <td>~95 – 115 m²</td>
+            <td style="color:var(--gold);font-weight:600">148 – 168 tr</td>
+            <td style="color:var(--text-muted)">The Petal / P1–P2</td>
+            <td><span class="badge badge-coming">Sắp mở bán</span></td>
+          </tr>
+          <tr>
+            <td><strong>4BR / Duplex</strong></td>
+            <td>~130 m²+</td>
+            <td style="color:var(--gold);font-weight:600">162 – 174 tr</td>
+            <td style="color:var(--text-muted)">Masteri Iconic</td>
+            <td><span class="badge badge-coming">Sắp mở bán</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <p class="price-note">* Giá tham khảo, chưa bao gồm VAT & phí bảo trì. Liên hệ để nhận báo giá chính thức và hỗ trợ vay ngân hàng lên đến 70%.</p>
   </div>
 </section>
@@ -570,33 +840,36 @@
 <!-- FORM TƯ VẤN -->
 <section id="tu-van" class="form-section">
   <div class="container">
-    <div class="form-wrap">
-      <p class="section-tag" style="text-align:center">Đăng Ký Tư Vấn</p>
-      <h2 class="section-title" style="text-align:center">Nhận <strong>bảng giá & chính sách</strong><br />mới nhất trong 30 phút</h2>
-      <div class="divider" style="margin:24px auto"></div>
-      <p class="section-desc" style="text-align:center;margin:0 auto">Chúng tôi sẽ liên hệ trong vòng 30 phút (trong giờ hành chính) với đầy đủ thông tin: bảng giá, chính sách vay, lịch tham quan thực tế.</p>
+    <div class="form-outer">
+      <p class="section-label fade-up" style="text-align:center">Đăng Ký Tư Vấn</p>
+      <h2 class="section-title fade-up" style="text-align:center">Nhận <strong>bảng giá & chính sách</strong><br />mới nhất trong 30 phút</h2>
+      <div class="gold-line center fade-up"></div>
+      <p class="section-desc fade-up" style="text-align:center;margin:0 auto;max-width:480px">Chuyên viên liên hệ trong 30 phút (giờ hành chính) với bảng giá, chính sách vay và lịch tham quan thực tế.</p>
 
       <!-- Success state -->
       <div class="form-success" id="form-success">
-        <h3>✓ Đã nhận thông tin!</h3>
-        <p>Chuyên viên sẽ liên hệ với bạn trong vòng 30 phút.<br />Trong khi chờ, bạn có thể nhắn Zalo để được hỗ trợ ngay.</p>
-        <a href="https://zalo.me/0904602168" target="_blank" class="btn-primary" style="margin-top:24px;display:inline-block">
-          Chat Zalo Ngay →
+        <div class="form-success-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
+        </div>
+        <h3>Đã nhận thông tin của bạn</h3>
+        <p>Chuyên viên sẽ liên hệ trong vòng 30 phút.<br />Hoặc nhắn Zalo để được hỗ trợ ngay bây giờ.</p>
+        <a href="https://zalo.me/0904602168" target="_blank" class="btn-primary" style="margin-top:28px;display:inline-block">
+          Chat Zalo Ngay
         </a>
       </div>
 
       <!-- Form -->
       <form id="lead-form" action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" method="POST">
         <div class="form-grid">
-          <div class="form-group">
+          <div class="form-group fade-up">
             <label>Họ và tên *</label>
             <input type="text" name="ho_ten" placeholder="Nguyễn Văn A" required />
           </div>
-          <div class="form-group">
+          <div class="form-group fade-up">
             <label>Số điện thoại *</label>
             <input type="tel" name="sdt" placeholder="09xx xxx xxx" required pattern="[0-9]{9,11}" />
           </div>
-          <div class="form-group">
+          <div class="form-group fade-up">
             <label>Loại căn quan tâm</label>
             <select name="loai_can">
               <option value="">-- Chọn loại căn --</option>
@@ -607,7 +880,7 @@
               <option>4BR / Duplex / Penthouse</option>
             </select>
           </div>
-          <div class="form-group">
+          <div class="form-group fade-up">
             <label>Mục đích</label>
             <select name="muc_dich">
               <option value="">-- Chọn --</option>
@@ -616,21 +889,34 @@
               <option>Đầu tư tích lũy</option>
             </select>
           </div>
-          <div class="form-group full">
+          <div class="form-group full fade-up">
             <label>Ghi chú (tuỳ chọn)</label>
             <textarea name="ghi_chu" placeholder="Tầng cao, view nội khu, ngân sách…"></textarea>
           </div>
-          <div class="form-group full">
+          <div class="form-group full fade-up">
             <button type="submit" class="form-submit">Gửi Yêu Cầu Tư Vấn →</button>
           </div>
         </div>
       </form>
 
-      <p class="form-privacy">🔒 Thông tin của bạn được bảo mật tuyệt đối. Chúng tôi không chia sẻ dữ liệu cho bên thứ ba.</p>
+      <div class="form-meta fade-up">
+        <div class="form-meta-item">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Bảo mật tuyệt đối
+        </div>
+        <div class="form-meta-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+          Phản hồi trong 30 phút
+        </div>
+        <div class="form-meta-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.8 19.8 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
+          Miễn phí tư vấn
+        </div>
+      </div>
 
-      <div class="tracking-badge">
+      <div class="tracking-badge fade-up">
         <div class="tracking-dot"></div>
-        <span>Hệ thống đang theo dõi lead tự động · Thời gian phản hồi trung bình: <strong style="color:#4ADE80">28 phút</strong></span>
+        <span>Hệ thống theo dõi lead tự động · Thời gian phản hồi trung bình: <strong style="color:var(--green)">28 phút</strong></span>
       </div>
     </div>
   </div>
@@ -639,21 +925,22 @@
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <strong>LUMIÈRE Hanoi Seasons Garden</strong><br />
+    <span class="footer-logo">LUMIÈRE</span>
+    <strong>Hanoi Seasons Garden</strong><br />
     233–235 Nguyễn Trãi, Phường Thượng Đình, Quận Thanh Xuân, Hà Nội<br />
     Chủ đầu tư: Masterise Homes<br /><br />
-    <span style="font-size:11px">Thông tin trên trang này mang tính chất tham khảo và được tổng hợp từ nguồn phân phối. Giá bán chính thức theo hợp đồng của CĐT.</span>
+    <span>Thông tin mang tính tham khảo, tổng hợp từ nguồn phân phối. Giá bán chính thức theo hợp đồng CĐT.</span>
   </div>
 </footer>
 
 <!-- ZALO STICKY -->
 <a href="https://zalo.me/0904602168" target="_blank" rel="noopener" class="zalo-sticky" id="zalo-btn">
-  <span class="zalo-icon">💬</span>
-  <span>Chat Zalo Ngay</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.68 1.15 5.1 3 6.82V22l3.91-2.17C10.23 20.27 11.1 20.4 12 20.4c5.52 0 10-4.02 10-9.4C22 6.02 17.52 2 12 2zm1 12.5l-2.5-2.7L6 14.5l5.2-5.5 2.5 2.7L18 9.5l-5 5z"/></svg>
+  Chat Zalo Ngay
 </a>
 
 <script>
-  // Form submit → Google Sheets (AJAX)
+  // ── FORM SUBMIT ──
   const form = document.getElementById('lead-form');
   const success = document.getElementById('form-success');
 
@@ -664,7 +951,6 @@
     btn.disabled = true;
 
     const data = new FormData(form);
-    // Add metadata
     data.append('source', document.referrer || 'direct');
     data.append('utm_source', new URLSearchParams(location.search).get('utm_source') || '');
     data.append('utm_medium', new URLSearchParams(location.search).get('utm_medium') || '');
@@ -673,18 +959,11 @@
     data.append('page_url', location.href);
 
     fetch(form.action, { method: 'POST', body: data })
-      .then(() => {
-        form.style.display = 'none';
-        success.style.display = 'block';
-      })
-      .catch(() => {
-        // Fallback: still show success (data may have gone through)
-        form.style.display = 'none';
-        success.style.display = 'block';
-      });
+      .then(() => { form.style.display = 'none'; success.style.display = 'block'; })
+      .catch(() => { form.style.display = 'none'; success.style.display = 'block'; });
   });
 
-  // Smooth scroll offset for fixed topbar
+  // ── SMOOTH SCROLL ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
@@ -695,14 +974,28 @@
     });
   });
 
-  // Show Zalo button after scroll
-  const zaloBTN = document.getElementById('zalo-btn');
+  // ── ZALO SHOW ON SCROLL ──
+  const zaloBtn = document.getElementById('zalo-btn');
+  zaloBtn.style.opacity = '0';
+  zaloBtn.style.transform = 'translateY(8px)';
   window.addEventListener('scroll', () => {
-    zaloBTN.style.opacity = window.scrollY > 300 ? '1' : '0';
-    zaloBTN.style.pointerEvents = window.scrollY > 300 ? 'auto' : 'none';
+    const show = window.scrollY > 300;
+    zaloBtn.style.opacity = show ? '1' : '0';
+    zaloBtn.style.transform = show ? 'translateY(0)' : 'translateY(8px)';
+    zaloBtn.style.pointerEvents = show ? 'auto' : 'none';
   });
-  zaloBTN.style.opacity = '0';
-  zaloBTN.style.transition = 'opacity 0.3s';
+
+  // ── FADE-IN ON SCROLL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
 </body>
